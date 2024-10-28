@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-pays-docker-deployment-service
+  labels:
+      app: pays-kubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pays-kubernetes
+  template:
+    metadata:
+      labels:
+        app: pays-kubernetes
+    spec:
+      containers:
+      - name: pays-kubernetes
+        image: mickael2022/pays-docker-hub
+        ports:
+        - containerPort: 8080
+        
